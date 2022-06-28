@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
     mode: 'production',
@@ -24,8 +25,9 @@ module.exports = {
         filename: 'bundle.js',
     },
     plugins: [
+        new ESLintPlugin(),
         new CleanWebpackPlugin(),
-        new webpack.HotModuleReplacementPlugin(), 
+        new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             title: 'React Boilerplate',
             template: path.resolve(__dirname, './src/index.html'),
